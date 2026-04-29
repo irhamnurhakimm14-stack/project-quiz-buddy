@@ -71,23 +71,123 @@ npm run dev
 
 ---
 
-## 🔌 KONEKSI KE DBeaver
+## 🔌 KONEKSI KE DBeaver (LENGKAP)
 
-1. Buka DBeaver → **Database → New Database Connection**
-2. Pilih **PostgreSQL** → Next
-3. Isi:
+### A. Bikin Connection ke PostgreSQL
+
+1. Buka **DBeaver** → menu **Database → New Database Connection** (atau ikon colokan listrik di kiri atas).
+2. Pilih **PostgreSQL** → klik **Next**.
+3. Tab **Main**, isi:
    - **Host**: `localhost`
    - **Port**: `5432`
    - **Database**: `ketemu_db`
    - **Username**: `ketemu`
    - **Password**: `ketemu123`
-4. Klik **Test Connection** → kalau diminta download driver, klik **Download**
-5. Klik **Finish**
+   - Centang **Save password**.
+4. Klik **Test Connection…** → kalau muncul popup "Download driver files", klik **Download**, tunggu selesai.
+5. Kalau muncul ✅ **Connected** → klik **OK** → **Finish**.
+6. Di sidebar kiri (Database Navigator) akan muncul connection baru. Expand:
+   `ketemu_db → Schemas → public → Tables`
 
-Sekarang kamu bisa lihat semua tabel di sidebar:
-`users`, `items`, `claims`, `quizzes`, `quiz_questions`, `quiz_attempts`, `honesty_logs`, `locations`, `priority_transactions`, `notifications`.
+> Kalau connection error `Connection refused` → pastikan Docker udah jalan: `docker ps` harus ada container `ketemu_postgres`.
 
-Klik kanan tabel → **View Data** untuk melihat isinya.
+---
+
+### B. (Opsional) Import Schema & Seed SQL Secara Manual via DBeaver
+
+> ℹ️ **Kalau kamu pakai `docker compose up -d` dengan volume kosong, schema & seed sudah otomatis ke-load** (lihat `docker-compose.yml` baris `docker-entrypoint-initdb.d`). Jadi langkah ini hanya kamu butuhkan kalau:
+> - Kamu **tidak pakai Docker** dan punya PostgreSQL lokal sendiri, ATAU
+> - Database sudah ada tapi **kosong** / mau **reset & re-seed manual**.
+
+#### B.1 — Bikin Database `ketemu_db` (skip kalau pakai Docker)
+
+Kalau PostgreSQL kamu lokal (bukan Docker), bikin database dulu:
+
+1. Connect ke connection PostgreSQL kamu di DBeaver.
+2. Klik kanan **Databases** → **Create New Database** → nama: `ketemu_db` → OK.
+3. Disconnect, lalu **edit connection** → ubah Database jadi `ketemu_db` → reconnect.
+
+#### B.2 — Reset Database (kalau mau mulai bersih)
+
+Klik kanan connection `ketemu_db` → **SQL Editor → Open SQL Script**, jalankan:
+```sql
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+```
+Tekan **Ctrl+Enter** (atau Alt+X) untuk eksekusi.
+
+#### B.3 — Import `01_schema.sql` (bikin tabel)
+
+**Cara cepat (Execute SQL Script):**
+1. Klik kanan connection `ketemu_db` → **SQL Editor → Execute SQL Script…**
+2. Pilih file: `backend/sql/01_schema.sql`
+3. Centang **Auto-commit** → klik **Start**.
+4. Tunggu sampai muncul "Script executed successfully".
+
+**Cara alternatif (paste manual):**
+1. Klik kanan `ketemu_db` → **SQL Editor → Open SQL Script**.
+2. Buka file `backend/sql/01_schema.sql` di text editor → copy semua → paste ke SQL Editor DBeaver.
+3. Tekan **Alt+X** (Execute SQL Script) — bukan Ctrl+Enter (yang itu cuma jalanin 1 statement).
+
+#### B.4 — Import `02_seed.sql` (isi data demo)
+
+Ulangi cara di atas, tapi pilih file `backend/sql/02_seed.sql`. Wajib dijalankan **setelah** schema, karena seed bergantung pada tabel.
+
+#### B.5 — Refresh & Verifikasi Tabel
+
+1. Klik kanan node **Tables** di sidebar → **Refresh** (F5).
+2. Kamu harus melihat 10 tabel ini:
+   `users`, `locations`, `items`, `claims`, `honesty_logs`, `quizzes`, `quiz_questions`, `quiz_attempts`, `priority_transactions`, `notifications`.
+
+---
+
+### C. Cek Data Sudah Masuk dengan Benar
+
+#### C.1 — Cek lewat klik kanan
+Klik kanan tabel apapun → **View Data → All Rows** (atau tekan F4 dengan tabel dipilih).
+
+#### C.2 — Cek lewat SQL Editor (recommended)
+
+Buka **SQL Editor** baru (Ctrl+Alt+Enter di connection), paste & jalankan query verifikasi ini satu per satu (blok query → Ctrl+Enter):
+
+```sql
+-- 1) Jumlah baris di setiap tabel utama (harus > 0 setelah seed)
+SELECT 'users' AS tabel, COUNT(*) FROM users
+UNION ALL SELECT 'locations', COUNT(*) FROM locations
+UNION ALL SELECT 'items', COUNT(*) FROM items
+UNION ALL SELECT 'honesty_logs', COUNT(*) FROM honesty_logs
+UNION ALL SELECT 'quizzes', COUNT(*) FROM quizzes
+UNION ALL SELECT 'quiz_questions', COUNT(*) FROM quiz_questions
+UNION ALL SELECT 'notifications', COUNT(*) FROM notifications;
+
+-- 2) Lihat semua user demo
+SELECT email, full_name, role, honesty_points FROM users ORDER BY honesty_points DESC;
+
+-- 3) Lihat semua barang yang dilaporkan
+SELECT title, type, category, status, location_text, date_event
+FROM items ORDER BY created_at DESC;
+
+-- 4) Lihat soal kuis integritas
+SELECT display_order, question, correct_answer FROM quiz_questions ORDER BY display_order;
+
+-- 5) Lihat lokasi QR code
+SELECT name, building, qr_code FROM locations;
+```
+
+**Hasil yang benar:**
+- `users` = 5 baris
+- `locations` = 4 baris
+- `items` = 5 baris
+- `quiz_questions` = 5 baris
+- `quizzes` = 1 baris
+- `honesty_logs` = 8 baris
+- `notifications` = 2 baris
+
+Kalau jumlahnya beda atau ada error `relation does not exist` → schema/seed belum berhasil di-import. Ulangi langkah B.3 dan B.4.
+
+#### C.3 — Cek Foreign Key & Relasi
+
+Klik tabel `items` di sidebar → tab **ER Diagram** → kamu akan lihat relasi `items → users` dan `items → locations`. Ini bukti FK aktif.
 
 ---
 
