@@ -1,38 +1,74 @@
-// Halaman ini hanya untuk preview di Lovable.
-// Aplikasi yang sebenarnya ada di folder /php/ dan dijalankan via XAMPP.
-// Lihat README.md untuk panduan lengkap.
+import Layout from "@/components/Layout";
+import { Link } from "react-router-dom";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground p-8 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-3">🔍 KETEMU — MVP Minggu 1</h1>
-      <p className="text-muted-foreground mb-6">
-        Project utama berada di folder <code className="bg-muted px-1.5 py-0.5 rounded">php/</code>{" "}
-        (PHP murni + PostgreSQL + Bootstrap 5).
-      </p>
+    <Layout>
+      <section className="bg-primary text-white py-5">
+        <div className="container text-center">
+          <h1 className="display-4 fw-bold mb-3">
+            <i className="bi bi-search me-2"></i>KETEMU
+          </h1>
+          <p className="lead mb-4">
+            Platform Lost &amp; Found Kampus — barang hilang? Pasti KETEMU.
+          </p>
+          <div className="d-flex gap-2 justify-content-center flex-wrap">
+            <Link to="/lapor" className="btn btn-light btn-lg">
+              <i className="bi bi-megaphone me-2"></i>Buat Laporan
+            </Link>
+            <Link to="/list-barang" className="btn btn-outline-light btn-lg">
+              <i className="bi bi-list-ul me-2"></i>Lihat Daftar
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <div className="border border-border rounded-lg p-5 mb-4 bg-card">
-        <h2 className="font-semibold mb-2">📂 Cara menjalankan</h2>
-        <ol className="list-decimal list-inside space-y-1 text-sm">
-          <li>Copy folder <code>php/</code> ke <code>C:\xampp\htdocs\ketemu\</code></li>
-          <li>Import <code>php/sql/skema.sql</code> &amp; <code>seed.sql</code> di DBeaver</li>
-          <li>Edit <code>php/config/koneksi.php</code> sesuai password PostgreSQL</li>
-          <li>Buka <code>http://localhost/ketemu/</code></li>
-        </ol>
-      </div>
+      <section className="container py-5">
+        <div className="row g-4">
+          <div className="col-md-4">
+            <div className="card h-100 shadow-sm border-0">
+              <div className="card-body text-center">
+                <i className="bi bi-person-plus display-5 text-primary"></i>
+                <h5 className="card-title mt-3">Daftar Akun</h5>
+                <p className="card-text text-muted">
+                  Buat akun pakai email kampus untuk mulai melapor barang hilang atau temuan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card h-100 shadow-sm border-0">
+              <div className="card-body text-center">
+                <i className="bi bi-megaphone display-5 text-primary"></i>
+                <h5 className="card-title mt-3">Lapor Barang</h5>
+                <p className="card-text text-muted">
+                  Isi form: jenis (hilang/temuan), judul, deskripsi, lokasi, dan upload foto.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card h-100 shadow-sm border-0">
+              <div className="card-body text-center">
+                <i className="bi bi-list-check display-5 text-primary"></i>
+                <h5 className="card-title mt-3">Cari &amp; Temukan</h5>
+                <p className="card-text text-muted">
+                  Lihat daftar laporan aktif, filter berdasarkan jenis, dan cari sesuai kata kunci.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div className="border border-border rounded-lg p-5 bg-card">
-        <h2 className="font-semibold mb-2">📖 Panduan lengkap</h2>
-        <p className="text-sm">
-          Buka file <code className="bg-muted px-1.5 py-0.5 rounded">README.md</code> di
-          root project — sudah ada langkah-langkah XAMPP, DBeaver, dan GitHub.
-        </p>
-      </div>
-
-      <p className="text-xs text-muted-foreground mt-6">
-        Preview Lovable ini <b>bukan aplikasi sebenarnya</b> — aplikasi PHP harus
-        dijalankan di laptop kamu sendiri.
-      </p>
-    </div>
+        <div className="alert alert-info mt-5 mb-0" role="alert">
+          <i className="bi bi-info-circle me-2"></i>
+          <strong>Catatan:</strong> Preview ini adalah <em>mirror UI</em> dari aplikasi PHP.
+          Backend asli (PHP + PostgreSQL) ada di folder <code>php/</code> — jalankan via XAMPP
+          di <code>http://localhost/ketemu/</code>. Lihat <code>README.md</code>.
+        </div>
+      </section>
+    </Layout>
   );
-}
+};
+
+export default Home;
