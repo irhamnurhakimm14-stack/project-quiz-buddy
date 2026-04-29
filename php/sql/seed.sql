@@ -6,11 +6,11 @@
 -- Hash di bawah dibuat dengan password_hash('password123', PASSWORD_DEFAULT)
 INSERT INTO users (nama, email, password, no_hp) VALUES
 ('Siti Fayza Kamila', 'fayza@student.ipb.ac.id',
- '$2y$10$Q8qZJk3oF8s4rN2pYcL9lO1xYsK8h6gJ0rT5wV2mB3nC4dE5fG6hI', '081234567890'),
+ '$2y$10$zg5UH3gpTun8EgUAn89xseQWT3AVH4b1NcEIJXQv8T6oW1L5NJmCS', '081234567890'),
 ('Abiyyu Ghulmy',     'abiyyu@student.ipb.ac.id',
- '$2y$10$Q8qZJk3oF8s4rN2pYcL9lO1xYsK8h6gJ0rT5wV2mB3nC4dE5fG6hI', '081234567891'),
+ '$2y$10$zg5UH3gpTun8EgUAn89xseQWT3AVH4b1NcEIJXQv8T6oW1L5NJmCS', '081234567891'),
 ('Irham Nurhakim',    'irham@student.ipb.ac.id',
- '$2y$10$Q8qZJk3oF8s4rN2pYcL9lO1xYsK8h6gJ0rT5wV2mB3nC4dE5fG6hI', '081234567892');
+ '$2y$10$zg5UH3gpTun8EgUAn89xseQWT3AVH4b1NcEIJXQv8T6oW1L5NJmCS', '081234567892');
 
 INSERT INTO barang (nama, kategori, deskripsi) VALUES
 ('Kartu Tanda Mahasiswa', 'Kartu Identitas', 'Kartu identitas mahasiswa kampus'),
