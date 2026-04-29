@@ -5,11 +5,11 @@
 -- ============================================================
 
 INSERT INTO users (id, email, password_hash, full_name, nim, phone, role, faculty, honesty_points, is_verified) VALUES
-('11111111-1111-1111-1111-111111111111', 'admin@ketemu.id',  '$2b$10$rOZh0ZQYT7qXoFG5KzD8wOp1JqKKpV2Fk3mF.zJJK0yGqmK.s.iCG', 'Admin KETEMU', NULL, '081200000001', 'admin',   'Universitas', 0,   TRUE),
-('22222222-2222-2222-2222-222222222222', 'fayza@student.ipb.ac.id', '$2b$10$rOZh0ZQYT7qXoFG5KzD8wOp1JqKKpV2Fk3mF.zJJK0yGqmK.s.iCG', 'Siti Fayza Kamila', 'A24210001', '082123466074', 'student', 'FEM', 120, TRUE),
-('33333333-3333-3333-3333-333333333333', 'irham@student.ipb.ac.id', '$2b$10$rOZh0ZQYT7qXoFG5KzD8wOp1JqKKpV2Fk3mF.zJJK0yGqmK.s.iCG', 'Muhammad Irham Nurhakim', 'A24210002', '081234567890', 'student', 'FMIPA', 85, TRUE),
-('44444444-4444-4444-4444-444444444444', 'abi@student.ipb.ac.id',   '$2b$10$rOZh0ZQYT7qXoFG5KzD8wOp1JqKKpV2Fk3mF.zJJK0yGqmK.s.iCG', 'Abiyyurasyiddhiya Ghulmy', 'G64210003', '081298765432', 'student', 'Ilkom', 200, TRUE),
-('55555555-5555-5555-5555-555555555555', 'budi.kantin@ketemu.id',   '$2b$10$rOZh0ZQYT7qXoFG5KzD8wOp1JqKKpV2Fk3mF.zJJK0yGqmK.s.iCG', 'Pak Budi (Kantin)', NULL, '081311112222', 'vendor', 'Kantin Sapta', 60, TRUE);
+('11111111-1111-1111-1111-111111111111', 'admin@ketemu.id',  '$2b$10$LO.6hqNAu78uyTyr18bLyuVDEO4Dzfw8O39BUJVKHntmf.YkImeLy', 'Admin KETEMU', NULL, '081200000001', 'admin',   'Universitas', 0,   TRUE),
+('22222222-2222-2222-2222-222222222222', 'fayza@student.ipb.ac.id', '$2b$10$LO.6hqNAu78uyTyr18bLyuVDEO4Dzfw8O39BUJVKHntmf.YkImeLy', 'Siti Fayza Kamila', 'A24210001', '082123466074', 'student', 'FEM', 120, TRUE),
+('33333333-3333-3333-3333-333333333333', 'irham@student.ipb.ac.id', '$2b$10$LO.6hqNAu78uyTyr18bLyuVDEO4Dzfw8O39BUJVKHntmf.YkImeLy', 'Muhammad Irham Nurhakim', 'A24210002', '081234567890', 'student', 'FMIPA', 85, TRUE),
+('44444444-4444-4444-4444-444444444444', 'abi@student.ipb.ac.id',   '$2b$10$LO.6hqNAu78uyTyr18bLyuVDEO4Dzfw8O39BUJVKHntmf.YkImeLy', 'Abiyyurasyiddhiya Ghulmy', 'G64210003', '081298765432', 'student', 'Ilkom', 200, TRUE),
+('55555555-5555-5555-5555-555555555555', 'budi.kantin@ketemu.id',   '$2b$10$LO.6hqNAu78uyTyr18bLyuVDEO4Dzfw8O39BUJVKHntmf.YkImeLy', 'Pak Budi (Kantin)', NULL, '081311112222', 'vendor', 'Kantin Sapta', 60, TRUE);
 
 INSERT INTO locations (id, name, building, description, qr_code, latitude, longitude) VALUES
 ('a0000000-0000-0000-0000-000000000001', 'Kantin Sapta', 'Sapta Lounge', 'Kantin pusat IPB Dramaga', 'QR-SAPTA-001', -6.5598, 106.7251),
