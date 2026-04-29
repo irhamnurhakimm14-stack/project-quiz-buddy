@@ -6,6 +6,86 @@ Platform Lost & Found terintegrasi untuk ekosistem kampus modern, lengkap dengan
 
 ---
 
+## 📸 BUKTI PENGERJAAN (Checklist Screenshot untuk Laporan)
+
+> Simpan semua screenshot di folder `docs/screenshots/` lalu rename sesuai nama file di bawah. Placeholder gambar di README ini akan otomatis tampil setelah kamu drop file dengan nama yang sama.
+
+### ✅ 1) Setup Project — Frontend, Backend, GitHub
+
+| # | Yang harus di-screenshot | Nama file |
+|---|---|---|
+| 1.1 | Terminal saat `docker compose up -d` sukses (container `ketemu_postgres` running) | `01-docker-up.png` |
+| 1.2 | Terminal backend running: `API listening on :4000` | `02-backend-running.png` |
+| 1.3 | Browser membuka `http://localhost:4000/health` → `{"ok":true}` | `03-backend-health.png` |
+| 1.4 | Terminal frontend running: `Local: http://localhost:8080` | `04-frontend-running.png` |
+| 1.5 | Halaman repository GitHub kamu (sudah ke-push) | `05-github-repo.png` |
+| 1.6 | Struktur folder project di VS Code (sidebar terlihat `/backend`, `/src`, `docker-compose.yml`) | `06-project-structure.png` |
+
+![Docker up](docs/screenshots/01-docker-up.png)
+![Backend running](docs/screenshots/02-backend-running.png)
+![Backend health](docs/screenshots/03-backend-health.png)
+![Frontend running](docs/screenshots/04-frontend-running.png)
+![GitHub repo](docs/screenshots/05-github-repo.png)
+![Project structure](docs/screenshots/06-project-structure.png)
+
+---
+
+### ✅ 2) UI Sederhana — Tiap Fitur Sesuai Proposal
+
+| # | Halaman / Fitur | URL Lokal | Nama file |
+|---|---|---|---|
+| 2.1 | Home (Hero + Logo KETEMU) | `/` | `07-home.png` |
+| 2.2 | Register akun baru | `/register` | `08-register.png` |
+| 2.3 | Login (pakai akun demo) | `/login` | `09-login.png` |
+| 2.4 | Daftar Barang Hilang & Ditemukan | `/items` | `10-items-list.png` |
+| 2.5 | Detail item + tombol Klaim | `/items/:id` | `11-item-detail.png` |
+| 2.6 | Form Lapor barang (pilih lokasi QR + Priority Broadcast) | `/report` | `12-report-form.png` |
+| 2.7 | Kuis Integritas (5 soal) | `/quiz` | `13-quiz.png` |
+| 2.8 | Hasil Kuis + Honesty Points bertambah | `/quiz` (setelah submit) | `14-quiz-result.png` |
+| 2.9 | Leaderboard Top 10 paling amanah | `/leaderboard` | `15-leaderboard.png` |
+| 2.10 | Profile + riwayat klaim & poin | `/profile` | `16-profile.png` |
+| 2.11 | Admin Dashboard (moderasi laporan) | `/admin` | `17-admin.png` |
+| 2.12 | Notifikasi muncul setelah aksi | navbar 🔔 | `18-notification.png` |
+
+![Home](docs/screenshots/07-home.png)
+![Register](docs/screenshots/08-register.png)
+![Login](docs/screenshots/09-login.png)
+![Items list](docs/screenshots/10-items-list.png)
+![Item detail](docs/screenshots/11-item-detail.png)
+![Report form](docs/screenshots/12-report-form.png)
+![Quiz](docs/screenshots/13-quiz.png)
+![Quiz result](docs/screenshots/14-quiz-result.png)
+![Leaderboard](docs/screenshots/15-leaderboard.png)
+![Profile](docs/screenshots/16-profile.png)
+![Admin](docs/screenshots/17-admin.png)
+![Notification](docs/screenshots/18-notification.png)
+
+---
+
+### ✅ 3) Database Setup — Konfigurasi & Koneksi DBeaver
+
+| # | Yang harus di-screenshot | Nama file |
+|---|---|---|
+| 3.1 | Form koneksi DBeaver (host, port, db, user terisi) | `19-dbeaver-connect.png` |
+| 3.2 | Popup **Connected ✅** saat Test Connection | `20-dbeaver-test-ok.png` |
+| 3.3 | Sidebar DBeaver menampilkan 10 tabel di `public.Tables` | `21-dbeaver-tables.png` |
+| 3.4 | Hasil query `SELECT COUNT(*)` per tabel (lihat README bagian C.2) | `22-dbeaver-counts.png` |
+| 3.5 | Hasil `SELECT * FROM users` — 5 user demo terlihat | `23-dbeaver-users.png` |
+| 3.6 | Hasil `SELECT * FROM items` — 5 barang lapor terlihat | `24-dbeaver-items.png` |
+| 3.7 | ER Diagram tabel `items` (relasi ke users & locations) | `25-dbeaver-erd.png` |
+
+![DBeaver connect](docs/screenshots/19-dbeaver-connect.png)
+![DBeaver test ok](docs/screenshots/20-dbeaver-test-ok.png)
+![DBeaver tables](docs/screenshots/21-dbeaver-tables.png)
+![DBeaver counts](docs/screenshots/22-dbeaver-counts.png)
+![DBeaver users](docs/screenshots/23-dbeaver-users.png)
+![DBeaver items](docs/screenshots/24-dbeaver-items.png)
+![DBeaver ERD](docs/screenshots/25-dbeaver-erd.png)
+
+> 💡 **Tips screenshot**: Windows = `Win + Shift + S`, Mac = `Cmd + Shift + 4`. Simpan langsung ke `docs/screenshots/` dengan nama persis seperti tabel di atas.
+
+---
+
 ## 📦 Stack Teknologi
 
 | Layer | Teknologi |
